@@ -17,6 +17,9 @@ Xavier 的 dota2 自定义游戏开发模板
 4. 安装好 [vscode](https://code.visualstudio.com/download)，使用vscode打开clone的文件夹
 5. 打开 `scripts/addon.config.ts`，将 `addon_name` 修改为你想要使用的项目名称
 6. 执行 `yarn install`安装依赖
+> Linked D:\_webcode\_pre\dota2game\game <==> D:\steam\steamapps\common\dota 2 beta\game\dota_addons\dota2game_package
+
+> Linked D:\_webcode\_pre\dota2game\content <==> D:\steam\steamapps\common\dota 2 beta\content\dota_addons\dota2game_package
 7. 执行 `yarn dev` 开始你的开发
 8. **你可以使用指令`yarn launch map_name` 快速启动测试，或者使用 `yarn launch` 指令只启动工具**
 
