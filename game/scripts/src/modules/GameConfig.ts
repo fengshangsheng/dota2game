@@ -5,9 +5,9 @@ export class GameConfig {
         GameRules.SetCustomGameSetupAutoLaunchDelay(3); // 游戏设置时间（默认的游戏设置是最开始的队伍分配）
         GameRules.SetCustomGameSetupRemainingTime(3); // 游戏设置剩余时间
         GameRules.SetCustomGameSetupTimeout(3); // 游戏设置阶段超时
-        GameRules.SetHeroSelectionTime(0); // 选择英雄阶段的持续时间
-        GameRules.SetShowcaseTime(0); // 选完英雄的展示时间
-        GameRules.SetPreGameTime(0); // 进入游戏后号角吹响前的准备时间
+        GameRules.SetHeroSelectionTime(5); // 选择英雄阶段的持续时间
+        GameRules.SetShowcaseTime(5); // 选完英雄的展示时间
+        GameRules.SetPreGameTime(5); // 进入游戏后号角吹响前的准备时间
         GameRules.SetPostGameTime(30); // 游戏结束后时长
         GameRules.SetSameHeroSelectionEnabled(true); // 是否允许选择相同英雄
         GameRules.SetStartingGold(0); // 设置初始金钱
@@ -25,10 +25,10 @@ export class GameConfig {
         game.SetSelectionGoldPenaltyEnabled(false); // 是否启用选择英雄时的金钱惩罚（超时每秒扣钱）
         game.SetLoseGoldOnDeath(false); // 是否在英雄死亡时扣除金钱
         game.SetBuybackEnabled(false); // 是否允许买活
-        game.SetDaynightCycleDisabled(true); // 是否禁用白天黑夜循环
-        game.SetForceRightClickAttackDisabled(true); // 是否禁用右键攻击
-        game.SetHudCombatEventsDisabled(true); // 是否禁用战斗事件（左下角的战斗消息）
-        game.SetCustomGameForceHero(`npc_dota_hero_phoenix`); // 设置强制英雄（会直接跳过英雄选择阶段并直接为所有玩家选择这个英雄）
+        game.SetDaynightCycleDisabled(false); // 是否禁用白天黑夜循环
+        game.SetForceRightClickAttackDisabled(false); // 是否禁用右键攻击
+        game.SetHudCombatEventsDisabled(false); // 是否禁用战斗事件（左下角的战斗消息）
+        // game.SetCustomGameForceHero(`npc_dota_hero_phoenix`); // 设置强制英雄（会直接跳过英雄选择阶段并直接为所有玩家选择这个英雄）
         // game.SetUseCustomHeroLevels(true); // 是否启用自定义英雄等级
         // game.SetCustomHeroMaxLevel(1); // 设置自定义英雄最大等级
         // game.SetCustomXPRequiredToReachNextLevel({
