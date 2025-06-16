@@ -56,7 +56,8 @@ export function useKeyDown(keyName: string, callback: Function) {
       callback();
     });
     return () => {
-      setKeyDownCallback(keyName, () => {});
+      setKeyDownCallback(keyName, () => {
+      });
     };
   }, [keyName, callback]);
 }
@@ -75,7 +76,8 @@ export function useKeyUp(keyName: string, callback: Function): void {
       callback();
     });
     return () => {
-      setKeyUpCallback(keyName, () => {});
+      setKeyUpCallback(keyName, () => {
+      });
     };
   }, [keyName, callback]);
 }

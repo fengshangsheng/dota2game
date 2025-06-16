@@ -24,18 +24,10 @@
   "plugins": [
     "@typescript-eslint",
     "import",
-    "prettier",
     "react",
     "react-hooks"
   ],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto",
-        "tabWidth": 2
-      }
-    ],
     "no-restricted-imports": [
       "error",
       {

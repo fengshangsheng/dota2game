@@ -6,5 +6,5 @@ Object.assign(getfenv(), {
   Activate: () => {
     ActivateModules();
   },
-  Precache: Precache,
+  Precache: Precache
 });

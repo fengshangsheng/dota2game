@@ -10,24 +10,24 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'layout/custom_game'),
     publicPath: 'file://{resources}/layout/custom_game/',
-    chunkFormat: 'commonjs',
+    chunkFormat: 'commonjs'
   },
 
   watchOptions: {
-    aggregateTimeout: 1000, // 在1s内保存的所有文件都会被一次打包，因此也意味着每次按保存后要等一秒才能看到运行结果
+    aggregateTimeout: 1000 // 在1s内保存的所有文件都会被一次打包，因此也意味着每次按保存后要等一秒才能看到运行结果
   },
 
   optimization: {
-    usedExports: true, // 启用 tree shaking
+    usedExports: true // 启用 tree shaking
   },
 
   cache: {
-    type: 'filesystem', // 降低首次运行的编译时间
+    type: 'filesystem' // 降低首次运行的编译时间
   },
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '...'],
-    symlinks: false,
+    symlinks: false
   },
 
   module: {
@@ -35,30 +35,30 @@ module.exports = {
       {
         test: /\.xml$/,
         loader: 'webpack-panorama-x/lib/layout-loader',
-        options: {},
+        options: {}
       },
       {
         test: /\.[jt]sx$/,
         issuer: /\.xml$/,
-        loader: 'webpack-panorama-x/lib/entry-loader',
+        loader: 'webpack-panorama-x/lib/entry-loader'
       },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
-        options: { transpileOnly: true },
+        options: { transpileOnly: true }
       },
       {
         test: /\.js?$|\.jsx?$/,
         loader: 'babel-loader',
         exclude: [/node_modules/],
-        options: { presets: ['@babel/preset-react', '@babel/preset-env'] },
+        options: { presets: ['@babel/preset-react', '@babel/preset-env'] }
       },
       {
         test: /\.css$/,
         test: /\.(css|less)$/,
         issuer: /\.xml$/,
         loader: 'file-loader',
-        options: { name: '[path][name].css', esModule: false },
+        options: { name: '[path][name].css', esModule: false }
       },
       {
         test: /\.less$/,
@@ -72,19 +72,19 @@ module.exports = {
             return content;
           },
           lessOptions: {
-            relativeUrls: false,
-          },
-        },
-      },
-    ],
+            relativeUrls: false
+          }
+        }
+      }
+    ]
   },
 
   plugins: [
     new PanoramaTargetPlugin(),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
-        configFile: path.resolve(__dirname, 'tsconfig.json'),
-      },
+        configFile: path.resolve(__dirname, 'tsconfig.json')
+      }
     }),
     new PanoramaManifestPlugin({
       entries: [
@@ -100,11 +100,11 @@ module.exports = {
         { import: './end_screen/layout.xml', type: 'EndScreen', filename: 'end_screen.xml' },
 
         // if filename is not set, it will use the name of the entry
-        { import: './hud/layout.xml', type: 'Hud' },
-      ],
+        { import: './hud/layout.xml', type: 'Hud' }
+      ]
     }),
     // use ignore plugin to ignore less files changes
     // they are watched and compiled in gulpfile.ts
-    new WatchIgnorePlugin({ paths: [/\.less$/] }),
-  ],
+    new WatchIgnorePlugin({ paths: [/\.less$/] })
+  ]
 };

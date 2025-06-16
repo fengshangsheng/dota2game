@@ -50,7 +50,7 @@ export class crystal_nova_x extends BaseAbility {
       damage: damage,
       damage_type: DamageTypes.MAGICAL,
       ability: this,
-      victim: undefined, // 这里先不指定victim，之后会遍历enemies
+      victim: undefined // 这里先不指定victim，之后会遍历enemies
     };
 
     enemies.forEach(enemy => {

@@ -55,10 +55,7 @@ function handleChunkedData(content: string) {
   config.__x_nettable_chunks_cache__[unique_id][chunk_index] = chunk_data;
 
   if (Object.values(config.__x_nettable_chunks_cache__[unique_id]).length >= data_count) {
-    const res = Object.entries(config.__x_nettable_chunks_cache__[unique_id])
-      .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
-      .map(v => v[1])
-      .join('');
+    const res = Object.entries(config.__x_nettable_chunks_cache__[unique_id]).sort((a, b) => parseInt(a[0]) - parseInt(b[0])).map(v => v[1]).join('');
 
     parseAndDispatch(res);
   }
@@ -145,7 +142,7 @@ export function dispatch(table_name: string, key: string, content: any) {
       const table_data = {
         table_name,
         key,
-        content,
+        content
       };
       // console.log(`x net table data updated ${table_name}->${key}`);
       emitLocalEvent(`x_net_table`, table_data);

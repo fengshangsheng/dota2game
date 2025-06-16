@@ -74,20 +74,20 @@ namespace qrcodegen {
       //0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40    Error correction level
       [
         -1, 7, 10, 15, 20, 26, 18, 20, 24, 30, 18, 20, 24, 26, 30, 22, 24, 28, 30, 28, 28, 28, 28, 30, 30, 26, 28, 30, 30, 30, 30, 30, 30, 30, 30, 30,
-        30, 30, 30, 30, 30,
+        30, 30, 30, 30, 30
       ], // Low
       [
         -1, 10, 16, 26, 18, 24, 16, 18, 22, 22, 26, 30, 22, 22, 24, 24, 28, 28, 26, 26, 26, 26, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28,
-        28, 28, 28, 28, 28, 28,
+        28, 28, 28, 28, 28, 28
       ], // Medium
       [
         -1, 13, 22, 18, 26, 18, 24, 18, 22, 20, 24, 28, 26, 24, 20, 30, 24, 28, 28, 26, 30, 28, 30, 30, 30, 30, 28, 30, 30, 30, 30, 30, 30, 30, 30,
-        30, 30, 30, 30, 30, 30,
+        30, 30, 30, 30, 30, 30
       ], // Quartile
       [
         -1, 17, 28, 22, 16, 22, 28, 26, 26, 24, 28, 24, 28, 22, 24, 24, 30, 28, 28, 26, 28, 30, 24, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
-        30, 30, 30, 30, 30, 30,
-      ], // High
+        30, 30, 30, 30, 30, 30
+      ] // High
     ];
 
     /*-- Constructor (low level) and fields --*/
@@ -101,16 +101,16 @@ namespace qrcodegen {
       [-1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 4, 4, 4, 4, 4, 6, 6, 6, 6, 7, 8, 8, 9, 9, 10, 12, 12, 12, 13, 14, 15, 16, 17, 18, 19, 19, 20, 21, 22, 24, 25], // Low
       [
         -1, 1, 1, 1, 2, 2, 4, 4, 4, 5, 5, 5, 8, 9, 9, 10, 10, 11, 13, 14, 16, 17, 17, 18, 20, 21, 23, 25, 26, 28, 29, 31, 33, 35, 37, 38, 40, 43, 45,
-        47, 49,
+        47, 49
       ], // Medium
       [
         -1, 1, 1, 2, 2, 4, 4, 6, 6, 8, 8, 8, 10, 12, 16, 12, 17, 16, 18, 21, 20, 23, 23, 25, 27, 29, 34, 34, 35, 38, 40, 43, 45, 48, 51, 53, 56, 59,
-        62, 65, 68,
+        62, 65, 68
       ], // Quartile
       [
         -1, 1, 1, 2, 4, 4, 4, 5, 6, 8, 8, 11, 11, 16, 16, 18, 16, 19, 21, 25, 25, 25, 34, 30, 32, 35, 37, 40, 42, 45, 48, 51, 54, 57, 60, 63, 66, 70,
-        74, 77, 81,
-      ], // High
+        74, 77, 81
+      ] // High
     ];
 
     /*-- Accessor methods --*/
@@ -756,7 +756,7 @@ namespace qrcodegen {
     public static makeNumeric(digits: string): QrSegment {
       if (!QrSegment.isNumeric(digits)) throw new RangeError('String contains non-numeric characters');
       const bb: Array<bit> = [];
-      for (let i = 0; i < digits.length; ) {
+      for (let i = 0; i < digits.length;) {
         // Consume up to 3 digits per iteration
         const n: int = Math.min(digits.length - i, 3);
         appendBits(parseInt(digits.substring(i, i + n), 10), n * 3 + 1, bb);
@@ -887,7 +887,8 @@ namespace qrcodegen.QrCode {
       public readonly ordinal: int,
       // (Package-private) In the range 0 to 3 (unsigned 2-bit integer).
       public readonly formatBits: int
-    ) {}
+    ) {
+    }
   }
 }
 
@@ -915,7 +916,8 @@ namespace qrcodegen.QrSegment {
       public readonly modeBits: int,
       // Number of character count bits for three different version ranges.
       private readonly numBitsCharCount: [int, int, int]
-    ) {}
+    ) {
+    }
 
     /*-- Method --*/
 

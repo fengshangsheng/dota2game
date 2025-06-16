@@ -77,7 +77,7 @@ export class tiny_toss_x extends BaseAbility {
       target_z: target_pos.z,
       direction_x: direction.x,
       direction_y: direction.y,
-      direction_z: 0,
+      direction_z: 0
     });
   }
 
@@ -144,7 +144,7 @@ export class modifier_tiny_toss_x extends BaseModifierMotionBoth {
       height: height,
       fix_duration: 0,
       isStun: 1,
-      activity: GameActivity.DOTA_FLAIL,
+      activity: GameActivity.DOTA_FLAIL
     });
 
     this.arc.SetEndCallback(interrupted => {
@@ -174,7 +174,7 @@ export class modifier_tiny_toss_x extends BaseModifierMotionBoth {
           damage_type: this.ability.GetAbilityDamageType(),
           damage_flags: DamageFlag.NONE,
           ability: this.ability,
-          victim: enemy,
+          victim: enemy
         };
         if (enemy == this.parent) {
           damage.damage *= 1 + this.ability.GetSpecialValueFor('bonus_damage_pct') / 100;

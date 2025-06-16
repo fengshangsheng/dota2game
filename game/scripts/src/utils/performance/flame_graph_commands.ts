@@ -51,7 +51,7 @@ export class FlameGraphCommands {
   updateDebugState(): void {
     GameRules.XNetTable.SetTableValue('performance_debug', 'debug_state', {
       state: this.recordingState,
-      time: this.recordingTime,
+      time: this.recordingTime
     });
   }
 

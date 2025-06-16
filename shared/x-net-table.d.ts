@@ -12,7 +12,8 @@ declare interface XNetTableDefinitions {
   };
 }
 
-declare interface BasicSettings {}
+declare interface BasicSettings {
+}
 
 // 专门为性能调试模块增加的表
 declare interface XNetTableDefinitions {

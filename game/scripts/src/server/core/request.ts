@@ -60,16 +60,14 @@ const getHeaders = (config: OpenAPIConfig, options: ApiRequestOptions): Record<s
   const headers = Object.entries({
     Accept: 'application/json',
     ...config.HEADERS,
-    ...options.headers,
-  })
-    .filter(([_, value]) => isDefined(value))
-    .reduce(
-      (headers, [key, value]) => ({
-        ...headers,
-        [key]: tostring(value),
-      }),
-      {} as Record<string, string>
-    );
+    ...options.headers
+  }).filter(([_, value]) => isDefined(value)).reduce(
+    (headers, [key, value]) => ({
+      ...headers,
+      [key]: tostring(value)
+    }),
+    {} as Record<string, string>
+  );
 
   if (options.body) {
     if (options.mediaType) {
@@ -103,7 +101,7 @@ const throwError = (result: CScriptHTTPResponse): void => {
     404: 'Not Found',
     500: 'Internal Server Error',
     502: 'Bad Gateway',
-    503: 'Service Unavailable',
+    503: 'Service Unavailable'
   };
 
   const __error = errors[result.StatusCode];

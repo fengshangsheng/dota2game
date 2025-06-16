@@ -13,21 +13,21 @@ const DebugCallbacks: Record<string, { desc: string; func: DebugCallbackFunction
       for (const [cmd, { desc }] of Object.entries(DebugCallbacks)) {
         print(`${cmd}: ${desc}`);
       }
-    },
+    }
   },
   ['-s']: {
     desc: '重载脚本',
     func: () => {
       SendToConsole('script_reload');
       print('-r 命令script_reload!重载脚本!');
-    },
+    }
   },
   ['-r']: {
     desc: '重启游戏',
     func: () => {
       SendToConsole('restart'); // 重启游戏
       print('-r 命令restart重启游戏!');
-    },
+    }
   },
   ['get_key_v3']: {
     desc: '获取v3版本的key',
@@ -35,7 +35,7 @@ const DebugCallbacks: Record<string, { desc: string; func: DebugCallbackFunction
       const version = args[0];
       const key = GetDedicatedServerKeyV3(version);
       Say(hero, `${version}: ${key}`, true);
-    },
+    }
   },
   ['get_key_v2']: {
     desc: '获取v2版本的key， get_key_v2 version',
@@ -43,7 +43,7 @@ const DebugCallbacks: Record<string, { desc: string; func: DebugCallbackFunction
       const version = args[0];
       const key = GetDedicatedServerKeyV2(version);
       Say(hero, `${version}: ${key}`, true);
-    },
+    }
   },
   ['-tween']: {
     desc: '测试Tween',
@@ -67,8 +67,8 @@ const DebugCallbacks: Record<string, { desc: string; func: DebugCallbackFunction
           return 0.03;
         }
       });
-    },
-  },
+    }
+  }
 };
 
 @reloadable
@@ -76,7 +76,7 @@ export class Debug {
   DebugEnabled = false;
   // 在线测试白名单
   OnlineDebugWhiteList = [
-    86815341, // Xavier
+    86815341 // Xavier
   ];
   private _chatListener: EventListenerID;
 

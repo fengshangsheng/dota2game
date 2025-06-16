@@ -28,7 +28,7 @@ const encrypt_files: string[] = [
   '!game/scripts/vscripts/utils/**/*.lua',
 
   // 范例代码（包含技能和modifier）需要双端运行，这里也不加密
-  '!game/scripts/vscripts/examples/**/*.lua',
+  '!game/scripts/vscripts/examples/**/*.lua'
 ];
 
 /** 发布时要排除的文件列表，他们不会被复制到发布的game文件夹 */
@@ -38,7 +38,7 @@ const exclude_files: string[] = [
   '**/*.ts',
   '**/*.bin',
   '**/*.py',
-  '**/*.cfg',
+  '**/*.cfg'
 ];
 
 /** 本地测试（工具模式）密钥，一般不需要修改 */
@@ -79,7 +79,8 @@ function importAddonName() {
     const fileContent = fs.readFileSync(filePath, 'utf8');
     addon_name = fileContent;
     console.log(`使用开发模板时配置的项目名称：${addon_name}`);
-  } catch (e) {}
+  } catch (e) {
+  }
 }
 
 // 同步调用导入函数
@@ -98,5 +99,5 @@ export default {
   exclude_files,
   encryptDedicatedServerKeyTest,
   encryptDedicatedServerKeyRelease_Test,
-  encryptDedicatedServerKeyRelease,
+  encryptDedicatedServerKeyRelease
 };

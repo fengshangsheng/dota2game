@@ -14,7 +14,7 @@ export function SequentialActionsTest() {
     }
   }, 1000);
 
-  const veryLongLabelList = Array.from({ length: 100 }, (_, i) => <Label key={i} text={`Label ${i}`} />);
+  const veryLongLabelList = Array.from({ length: 100 }, (_, i) => <Label key={i} text={`Label ${i}`}/>);
 
   return (
     <Panel
@@ -22,7 +22,7 @@ export function SequentialActionsTest() {
       style={{
         height: `200px`,
         flowChildren: 'down',
-        overflow: 'scroll',
+        overflow: 'scroll'
       }}
     >
       {veryLongLabelList}

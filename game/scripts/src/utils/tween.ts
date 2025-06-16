@@ -854,7 +854,8 @@ class Tween<T extends object> {
     private target: Partial<T>,
     private easing: (t: number, b: number, c: number, d: number) => number,
     private clock: number = 0
-  ) {}
+  ) {
+  }
 
   public set(clock: number) {
     assert(type(clock) == `number`, 'clock must be a number');

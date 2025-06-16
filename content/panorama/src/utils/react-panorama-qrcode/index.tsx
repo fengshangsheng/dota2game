@@ -21,7 +21,7 @@ const ERROR_LEVEL_MAP: ERROR_LEVEL_MAPPED_TYPE = {
   L: qrcodegen.QrCode.Ecc.LOW,
   M: qrcodegen.QrCode.Ecc.MEDIUM,
   Q: qrcodegen.QrCode.Ecc.QUARTILE,
-  H: qrcodegen.QrCode.Ecc.HIGH,
+  H: qrcodegen.QrCode.Ecc.HIGH
 } as const;
 
 type QRProps = {
@@ -102,12 +102,12 @@ function getMarginSize(marginSize?: number): number {
 }
 
 function useQRCode({
-  value,
-  level,
-  minVersion,
-  marginSize,
-  boostLevel,
-}: {
+                     value,
+                     level,
+                     minVersion,
+                     marginSize,
+                     boostLevel
+                   }: {
   value: string | string[];
   level: ErrorCorrectionLevel;
   minVersion: number;
@@ -130,13 +130,13 @@ function useQRCode({
     return {
       cells,
       margin,
-      numCells,
+      numCells
     };
   }, [qrcode, marginSize]);
 
   return {
     qrcode,
-    ...memoizedResult,
+    ...memoizedResult
   };
 }
 
@@ -174,7 +174,7 @@ export const PanoramaQRCode = React.forwardRef<Panel, PanelAttributes & QRProps>
     level,
     minVersion,
     boostLevel,
-    marginSize,
+    marginSize
   });
 
   React.useEffect(() => {
@@ -197,7 +197,7 @@ export const PanoramaQRCode = React.forwardRef<Panel, PanelAttributes & QRProps>
           x: Math.floor(numCells / 2 - excavate / 2),
           y: Math.floor(numCells / 2 - excavate / 2),
           w: excavate,
-          h: excavate,
+          h: excavate
         };
         cellsToDraw = excavateModules(cells, excavation);
       }

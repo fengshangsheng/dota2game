@@ -10,7 +10,7 @@ const paths: { [key: string]: string } = {
   src_json: 'game/scripts/src/json',
   panorama_json: 'content/panorama/src/json',
   panorama: 'content/panorama',
-  game_resource: 'game/resource',
+  game_resource: 'game/resource'
 };
 
 /**
@@ -21,18 +21,15 @@ const sheet_2_kv = (watch: boolean = false) => {
   return () => {
     const excelFiles = `${paths.excels}/**/*.{xlsx,xls}`;
     const transpileSheets = () => {
-      return gulp
-        .src(excelFiles)
-        .pipe(
-          dotax.sheetToKV({
-            // 所有支持的参数请按住 Ctrl 点击 sheetToKV 查看，以下其他 API 也是如此
-            sheetsIgnore: '^__.*|^Sheet[1-3]$', // 忽略以两个下划线开头的sheet 和 默认生成的 Sheet1 Sheet2 Sheet3 等
-            indent: `	`, // 自定义缩进
-            keyRowNumber: 2, // 自定义键值对的键所在的行数
-            addonCSVPath: `${paths.game_resource}/kv_generated.csv`, // 本地化文件路径，用以将 excel 文件中的 #Loc{}输出到addon.csv文件中去
-          })
-        )
-        .pipe(gulp.dest(paths.kv));
+      return gulp.src(excelFiles).pipe(
+        dotax.sheetToKV({
+          // 所有支持的参数请按住 Ctrl 点击 sheetToKV 查看，以下其他 API 也是如此
+          sheetsIgnore: '^__.*|^Sheet[1-3]$', // 忽略以两个下划线开头的sheet 和 默认生成的 Sheet1 Sheet2 Sheet3 等
+          indent: `	`, // 自定义缩进
+          keyRowNumber: 2, // 自定义键值对的键所在的行数
+          addonCSVPath: `${paths.game_resource}/kv_generated.csv` // 本地化文件路径，用以将 excel 文件中的 #Loc{}输出到addon.csv文件中去
+        })
+      ).pipe(gulp.dest(paths.kv));
     };
 
     if (watch) {
@@ -69,17 +66,17 @@ const kv_2_js = (watch: boolean = false) => {
  */
 const csv_to_localization =
   (watch: boolean = false) =>
-  () => {
-    const addonCsv = `${paths.game_resource}/*.csv`;
-    const transpileAddonCSVToLocalization = () => {
-      return gulp.src(addonCsv).pipe(dotax.csvToLocals(paths.game_resource));
+    () => {
+      const addonCsv = `${paths.game_resource}/*.csv`;
+      const transpileAddonCSVToLocalization = () => {
+        return gulp.src(addonCsv).pipe(dotax.csvToLocals(paths.game_resource));
+      };
+      if (watch) {
+        return gulp.watch(addonCsv, transpileAddonCSVToLocalization);
+      } else {
+        return transpileAddonCSVToLocalization();
+      }
     };
-    if (watch) {
-      return gulp.watch(addonCsv, transpileAddonCSVToLocalization);
-    } else {
-      return transpileAddonCSVToLocalization();
-    }
-  };
 
 /**
  * 将panorama/images目录下的jpg,png,psd文件集合到 dest 目录中的 image_precache.css文件中
@@ -87,17 +84,17 @@ const csv_to_localization =
  */
 const create_image_precache =
   (watch: boolean = false) =>
-  () => {
-    const imageFiles = `${paths.panorama}/images/**/*.{jpg,png,psd}`;
-    const createImagePrecache = () => {
-      return gulp.src(imageFiles).pipe(dotax.imagePrecacche(`content/panorama/images/`)).pipe(gulp.dest(paths.panorama));
+    () => {
+      const imageFiles = `${paths.panorama}/images/**/*.{jpg,png,psd}`;
+      const createImagePrecache = () => {
+        return gulp.src(imageFiles).pipe(dotax.imagePrecacche(`content/panorama/images/`)).pipe(gulp.dest(paths.panorama));
+      };
+      if (watch) {
+        return gulp.watch(imageFiles, createImagePrecache);
+      } else {
+        return createImagePrecache();
+      }
     };
-    if (watch) {
-      return gulp.watch(imageFiles, createImagePrecache);
-    } else {
-      return createImagePrecache();
-    }
-  };
 
 /** compile all less files to panorama path */
 const compile_less = (watch: boolean = false) => {
@@ -105,12 +102,9 @@ const compile_less = (watch: boolean = false) => {
     const lessFiles = `${paths.panorama}/src/**/*.less`;
     const compileLess = () => {
       return (
-        gulp
-          .src(lessFiles)
-          .pipe(less())
-          // valve 对于 @keyframes 有特殊的格式要求，需要将 @keyframes 的名称用单引号包裹
-          .pipe(replace(/@keyframes\s*(-?[_a-zA-Z]+[_a-zA-Z0-9-]*)/g, (match, name) => match.replace(name, `'${name}'`)))
-          .pipe(gulp.dest(path.join(paths.panorama, 'layout/custom_game')))
+        gulp.src(lessFiles).pipe(less())
+        // valve 对于 @keyframes 有特殊的格式要求，需要将 @keyframes 的名称用单引号包裹
+        .pipe(replace(/@keyframes\s*(-?[_a-zA-Z]+[_a-zA-Z0-9-]*)/g, (match, name) => match.replace(name, `'${name}'`))).pipe(gulp.dest(path.join(paths.panorama, 'layout/custom_game')))
       );
     };
     if (watch) {

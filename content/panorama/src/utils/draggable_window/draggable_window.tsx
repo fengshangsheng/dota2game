@@ -36,16 +36,16 @@ interface DraggableWindowProps {
  * 通用可拖拽窗口组件
  */
 export const DraggableWindow: FC<DraggableWindowProps> = ({
-  title,
-  children,
-  visible = true,
-  initialX = 150,
-  initialY = 150,
-  id = 'draggable_window',
-  className = '',
-  titleBarClassName = '',
-  contentClassName = '',
-}) => {
+                                                            title,
+                                                            children,
+                                                            visible = true,
+                                                            initialX = 150,
+                                                            initialY = 150,
+                                                            id = 'draggable_window',
+                                                            className = '',
+                                                            titleBarClassName = '',
+                                                            contentClassName = ''
+                                                          }) => {
   const positionRef = useRef({ x: initialX, y: initialY });
   const dragStartXRef = useRef(0);
   const dragStartYRef = useRef(0);
@@ -117,7 +117,7 @@ export const DraggableWindow: FC<DraggableWindowProps> = ({
       on-ui-DragEnd={handleDragEnd}
     >
       <Panel className={classnames('window_title_bar', titleBarClassName)}>
-        <Label className="window_title" text={title} hittest={false} />
+        <Label className="window_title" text={title} hittest={false}/>
       </Panel>
       <Panel className={classnames('window_content', contentClassName)}>{children}</Panel>
     </Panel>

@@ -48,7 +48,7 @@ export class modifier_counter_helix_x extends BaseModifier {
       damage: damage,
       ability: this.GetAbility(),
       damage_type: DamageTypes.PURE,
-      damage_flags: DamageFlag.NONE,
+      damage_flags: DamageFlag.NONE
     };
   }
 

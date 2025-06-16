@@ -64,4 +64,4 @@ const Root: FC = () => {
   );
 };
 
-render(<Root />, $.GetContextPanel());
+render(<Root/>, $.GetContextPanel());

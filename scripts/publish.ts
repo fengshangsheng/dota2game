@@ -29,8 +29,8 @@ async function traverseDirectory(dir: string, callback: (filePath: string, stats
     choices: [
       { name: `正式发布 PRODUCTION 对应密钥："${config.encryptDedicatedServerKeyRelease}"`, value: 'release' },
       { name: `测试发布 ONLINETEST 对应密钥："${config.encryptDedicatedServerKeyRelease_Test}"`, value: 'release_test' },
-      { name: `本地测试 LOCAL TEST 对应密钥："${config.encryptDedicatedServerKeyTest}"`, value: 'test' },
-    ],
+      { name: `本地测试 LOCAL TEST 对应密钥："${config.encryptDedicatedServerKeyTest}"`, value: 'test' }
+    ]
   });
 
   const excludeFiles = config.exclude_files;
@@ -40,8 +40,8 @@ async function traverseDirectory(dir: string, callback: (filePath: string, stats
     mode === `release`
       ? config.encryptDedicatedServerKeyRelease
       : mode === `release_test`
-      ? config.encryptDedicatedServerKeyRelease_Test
-      : config.encryptDedicatedServerKeyTest;
+        ? config.encryptDedicatedServerKeyRelease_Test
+        : config.encryptDedicatedServerKeyTest;
 
   const getPublishPath = (source: string): string => source.replace(/^game/, 'publish');
 
@@ -106,7 +106,7 @@ async function traverseDirectory(dir: string, callback: (filePath: string, stats
     if (mode !== `release` && mode !== `release_test`) {
       // 本地测试模式，要求用户输入地图名称
       const mapName = await input({
-        message: '请输入你要测试的地图名：',
+        message: '请输入你要测试的地图名：'
       });
       console.log(color.red(`正在启动dota2，请查看加密后的游戏是否正常运行！`));
       await launchDota2(`${addon_name}_publish`, mapName);

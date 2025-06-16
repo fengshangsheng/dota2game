@@ -17,30 +17,30 @@ import React, { useState } from 'react';
 import DraggableWindow from '../components/draggable_window';
 
 const MyComponent = () => {
-    const [windowVisible, setWindowVisible] = useState(true);
-    
-    const handleCloseWindow = () => {
-        setWindowVisible(false);
-    };
-    
-    return (
+  const [windowVisible, setWindowVisible] = useState(true);
+
+  const handleCloseWindow = () => {
+    setWindowVisible(false);
+  };
+
+  return (
+    <Panel>
+      <DraggableWindow
+        title="我的窗口"
+        visible={windowVisible}
+        initialX={200}
+        initialY={200}
+        width={400}
+        height={300}
+        icon="url('s2r://panorama/images/control_icons/settings_png.vtex')"
+        id="my_window"
+      >
         <Panel>
-            <DraggableWindow
-                title="我的窗口"
-                visible={windowVisible}
-                initialX={200}
-                initialY={200}
-                width={400}
-                height={300}
-                icon="url('s2r://panorama/images/control_icons/settings_png.vtex')"
-                id="my_window"
-            >
-                <Panel>
-                    <Label text="窗口内容" />
-                </Panel>
-            </DraggableWindow>
+          <Label text="窗口内容"/>
         </Panel>
-    );
+      </DraggableWindow>
+    </Panel>
+  );
 };
 ```
 
@@ -69,15 +69,15 @@ const MyComponent = () => {
 ```less
 // 自定义窗口样式
 .custom_window {
-    border: 2px solid #4488ff;
-    
-    .window_title_bar {
-        background-color: #4488ff;
-    }
-    
-    .window_content {
-        background-color: #f0f0f0;
-    }
+  border: 2px solid #4488ff;
+
+  .window_title_bar {
+    background-color: #4488ff;
+  }
+
+  .window_content {
+    background-color: #f0f0f0;
+  }
 }
 ```
 

@@ -50,9 +50,11 @@ function UpdateSingleActionUntilFinished(action: ISequenceAction): void {
  * Empty sequence action implementation useful for creating new actions that only implement a few of the functions
  */
 class BaseAction implements ISequenceAction {
-  finish(): void {}
+  finish(): void {
+  }
 
-  start(): void {}
+  start(): void {
+  }
 
   update(): boolean {
     return false;
@@ -232,9 +234,11 @@ class LoopingActions implements ISequenceAction {
 class WaitAction implements ISequenceAction {
   endTimestamp = 0;
 
-  constructor(public seconds: number) {}
+  constructor(public seconds: number) {
+  }
 
-  finish(): void {}
+  finish(): void {
+  }
 
   start(): void {
     this.endTimestamp = Game.Time() + this.seconds;
@@ -506,7 +510,8 @@ class AnimateDialogVariableIntAction implements ISequenceAction {
   startTimestamp = 0;
   endTimestamp = 0;
 
-  constructor(public panel: Panel, public dialogVariable: string, public startValue: number, public endValue: number, public seconds: number) {}
+  constructor(public panel: Panel, public dialogVariable: string, public startValue: number, public endValue: number, public seconds: number) {
+  }
 
   finish(): void {
     if (this.panel && this.panel.IsValid()) this.panel.SetDialogVariableInt(this.dialogVariable, this.endValue);
@@ -551,7 +556,8 @@ class AnimateProgressBarAction implements ISequenceAction {
   startTimestamp = 0;
   endTimestamp = 0;
 
-  constructor(public progressBar: ProgressBar, public startValue: number, public endValue: number, public seconds: number) {}
+  constructor(public progressBar: ProgressBar, public startValue: number, public endValue: number, public seconds: number) {
+  }
 
   finish(): void {
     this.progressBar.value = this.endValue;
@@ -587,7 +593,8 @@ class AnimateProgressBarWithMiddleAction implements ISequenceAction {
   startTimestamp = 0;
   endTimestamp = 0;
 
-  constructor(public progressBar: ProgressBarWithMiddle, public startValue: number, public endValue: number, public seconds: number) {}
+  constructor(public progressBar: ProgressBarWithMiddle, public startValue: number, public endValue: number, public seconds: number) {
+  }
 
   finish(): void {
     this.progressBar.uppervalue = this.endValue;
@@ -633,7 +640,7 @@ class PlaySoundForDurationAction extends SequentialActions {
     super([
       new FunctionAction(() => (this.soundEventGuid = PlayUISoundScript(soundName))),
       new WaitAction(duration),
-      new FunctionAction(() => StopUISoundScript(this.soundEventGuid)),
+      new FunctionAction(() => StopUISoundScript(this.soundEventGuid))
     ]);
   }
 }
@@ -644,7 +651,7 @@ class PlaySoundUntilFinishedAction extends SequentialActions {
   constructor(public soundName: string) {
     super([
       new FunctionAction(() => (this.soundEventGuid = PlayUISoundScript(soundName))),
-      new WaitForConditionAction(() => !IsUISoundScriptPlaying(this.soundEventGuid)),
+      new WaitForConditionAction(() => !IsUISoundScriptPlaying(this.soundEventGuid))
     ]);
   }
 }
@@ -654,7 +661,8 @@ class LerpAction implements ISequenceAction {
   startTimestamp = 0;
   endTimestamp = 0;
 
-  constructor(public seconds: number) {}
+  constructor(public seconds: number) {
+  }
 
   finish(): void {
     this.applyProgress(1.0);
@@ -686,7 +694,8 @@ class LerpAction implements ISequenceAction {
 class GuardedAction implements ISequenceAction {
   guardFailed = false;
 
-  constructor(public action: ISequenceAction, public guard: null | (() => boolean)) {}
+  constructor(public action: ISequenceAction, public guard: null | (() => boolean)) {
+  }
 
   TriggerFailure(): void {
     this.guardFailed = true;
@@ -801,7 +810,8 @@ class AnimateEntityInputAction implements ISequenceAction {
     public startValue: number,
     public endValue: number,
     public seconds: number
-  ) {}
+  ) {
+  }
 
   finish(): void {
     this.scenePanel.FireEntityInput(this.entityName, this.entityInput, this.endValue);
@@ -918,5 +928,5 @@ export {
   AnimateEntityInputAction,
   StartDuckingUIMusicAction,
   StopDuckingUIMusicAction,
-  PlayAndTrackSoundAction,
+  PlayAndTrackSoundAction
 };

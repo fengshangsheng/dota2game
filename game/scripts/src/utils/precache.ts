@@ -70,7 +70,8 @@ function precacheUnits(unitNamesList: string[], context?: CScriptPrecacheContext
     });
   } else {
     unitNamesList.forEach(unitName => {
-      PrecacheUnitByNameAsync(unitName, () => {});
+      PrecacheUnitByNameAsync(unitName, () => {
+      });
     });
   }
 }

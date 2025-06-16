@@ -64,7 +64,7 @@ import getDotaPath from './getDotaPath';
             dir,
             // 如果是文件夹，自动加上 * 通配符
             fs.statSync(targetPath).isDirectory() ? '*' : ''
-          )}"`,
+          )}"`
         ]);
         const command = c.join(` `);
         console.log(`开始执行指令：${command}`);
@@ -73,7 +73,7 @@ import getDotaPath from './getDotaPath';
           execSync(command, {
             maxBuffer: 1024 * 1024 * 100, // 给大一点
             // output console output in the command window
-            stdio: 'inherit',
+            stdio: 'inherit'
           });
         } catch (error) {
           console.error('执行命令时出错:', error);

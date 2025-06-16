@@ -79,7 +79,7 @@ export class modifier_generic_arc extends BaseModifierMotionBoth {
     return {
       [ModifierState.STUNNED]: this.isStun || false,
       [ModifierState.COMMAND_RESTRICTED]: this.isRestricted || false,
-      [ModifierState.NO_UNIT_COLLISION]: true,
+      [ModifierState.NO_UNIT_COLLISION]: true
     };
   }
 
@@ -242,5 +242,6 @@ export class modifier_generic_arc extends BaseModifierMotionBoth {
     return ModifierAttribute.MULTIPLE;
   }
 
-  private endCallback: (interrupted: boolean) => void = () => {};
+  private endCallback: (interrupted: boolean) => void = () => {
+  };
 }

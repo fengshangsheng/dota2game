@@ -170,8 +170,8 @@ export class XNetTable {
         data: {
           table_name: tname,
           key: k,
-          content: value,
-        },
+          content: value
+        }
       });
     } else {
       // 如果数据过大，那么拆分成块之后再推入发送队列
@@ -190,14 +190,14 @@ export class XNetTable {
       this._data_queue.unshift({
         target: playerId,
         data_length: size,
-        data: data,
+        data: data
       });
     } else {
       // 默认只使用这个推送到队列尾部的方式
       this._data_queue.push({
         target: playerId,
         data_length: size,
-        data: data,
+        data: data
       });
     }
   }
@@ -207,7 +207,7 @@ export class XNetTable {
     const data = this._encodeTable({
       table: tname,
       key,
-      value,
+      value
     });
     const chunks: string[] = [];
     const chunk_size = this.MTU - 2;
@@ -291,7 +291,7 @@ export class XNetTable {
         if (target == null || target == -1) {
           // print(`给全体玩家发送数据${data_str}`);
           CustomGameEventManager.Send_ServerToAllClients(`x_net_table`, {
-            data: content,
+            data: content
           });
         }
         // 否则发送给对应玩家
@@ -302,7 +302,7 @@ export class XNetTable {
           // 只有当玩家存在的时候才发给他
           if (player != null && !player.IsNull()) {
             CustomGameEventManager.Send_ServerToPlayer(player, `x_net_table`, {
-              data: content,
+              data: content
             });
           }
         }

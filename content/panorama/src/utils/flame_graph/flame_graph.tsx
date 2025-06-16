@@ -36,7 +36,7 @@ const transformData = (node: FlameNode): VisualNode => {
     name: node.name,
     value: node.totalTime,
     calls: node.calls,
-    children: [],
+    children: []
   };
   if (node.rate) {
     result.rate = node.rate;
@@ -125,7 +125,7 @@ export const FlameGraph: React.FC = () => {
           width: `${nodeWidth}px`,
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
-          flowChildren: 'down',
+          flowChildren: 'down'
         }}
       >
         <Panel
@@ -150,12 +150,12 @@ export const FlameGraph: React.FC = () => {
           }}
         >
           <Panel className="flame_node_msg_panel" style={{ align: 'center center', flowChildren: 'right' }}>
-            <Label className="flame_node_name" text={node.name} />
+            <Label className="flame_node_name" text={node.name}/>
             <Label
               text={node.value + 'ms'}
-              style={{ fontSize: '12px', color: '#ddd', textShadow: '1px 1px 1px #000', align: 'center center', fontWeight: 'medium' }}
+              style={{ fontSize: '12px', color: '#dddddd', textShadow: '1px 1px 1px #000', align: 'center center', fontWeight: 'medium' }}
             />
-            {node.rate && <Label className="flame_node_rate" text={node.rate / 100 + '%'} />}
+            {node.rate && <Label className="flame_node_rate" text={node.rate / 100 + '%'}/>}
           </Panel>
         </Panel>
 
@@ -169,7 +169,7 @@ export const FlameGraph: React.FC = () => {
   // 渲染火焰图
   const renderFlameGraph = () => {
     if (!currentData || currentData.value == 0)
-      return <Label text="无性能数据" style={{ color: '#fff', fontSize: '16px', align: 'center center' }} />;
+      return <Label text="无性能数据" style={{ color: '#fff', fontSize: '16px', align: 'center center' }}/>;
 
     const containerWidth = 680; // 容器宽度
     const totalValue = currentData.value;
@@ -289,13 +289,13 @@ export const FlameGraph: React.FC = () => {
               backgroundColor: '#333',
               padding: '5px 20px',
               borderRadius: '4px',
-              marginBottom: '10px',
+              marginBottom: '10px'
             }}
             onactivate={() => {
               setZoomStack(zoomStack.slice(0, -1));
             }}
           >
-            <Label style={{ align: 'center center', textAlign: 'center' }} text="返回" />
+            <Label style={{ align: 'center center', textAlign: 'center' }} text="返回"/>
           </Button>
         )}
       </Panel>
