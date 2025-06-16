@@ -16,29 +16,29 @@ let addon_name: string = 'dota2game_package';
  * 还是建议把核心代码保护住就好，技能代码之类的放出来供提升社区水平也是不错的
  */
 const encrypt_files: string[] = [
-    // 加密所有lua文件
-    '**/*.lua',
-    // 不加密这几个必须不加密的
-    '!game/scripts/vscripts/lualib_bundle.lua',
-    '!game/scripts/vscripts/addon_init.lua',
-    '!game/scripts/vscripts/addon_game_mode.lua',
-    '!game/scripts/vscripts/addon_game_mode_client.lua',
+  // 加密所有lua文件
+  '**/*.lua',
+  // 不加密这几个必须不加密的
+  '!game/scripts/vscripts/lualib_bundle.lua',
+  '!game/scripts/vscripts/addon_init.lua',
+  '!game/scripts/vscripts/addon_game_mode.lua',
+  '!game/scripts/vscripts/addon_game_mode_client.lua',
 
-    // 不加密解密所需代码
-    '!game/scripts/vscripts/utils/**/*.lua',
+  // 不加密解密所需代码
+  '!game/scripts/vscripts/utils/**/*.lua',
 
-    // 范例代码（包含技能和modifier）需要双端运行，这里也不加密
-    '!game/scripts/vscripts/examples/**/*.lua',
+  // 范例代码（包含技能和modifier）需要双端运行，这里也不加密
+  '!game/scripts/vscripts/examples/**/*.lua',
 ];
 
 /** 发布时要排除的文件列表，他们不会被复制到发布的game文件夹 */
 const exclude_files: string[] = [
-    'game/scripts/src/**/*.*', // 不输出源码
-    '**/*.json',
-    '**/*.ts',
-    '**/*.bin',
-    '**/*.py',
-    '**/*.cfg',
+  'game/scripts/src/**/*.*', // 不输出源码
+  '**/*.json',
+  '**/*.ts',
+  '**/*.bin',
+  '**/*.py',
+  '**/*.cfg',
 ];
 
 /** 本地测试（工具模式）密钥，一般不需要修改 */
@@ -52,16 +52,16 @@ const encryptDedicatedServerKeyRelease: string = `这里需要填入正式的发
 
 /** 验证配置是否合法 */
 function validateAddonName() {
-    if (!addon_name.match(/^[a-z][a-z0-9_]*$/)) {
-        throw new Error(
-            'addon_name 必须为字母开头，而且只能包含小写字母、数字和下划线，请到 addon.config.ts 修改\nplease change addon_name in c to match /^[a-z][a-z0-9_]*$/'
-        );
-    }
-    if (addon_name === 'x_template') {
-        throw new Error(
-            '请到 scripts/addon.config.ts 修改 addon_name 为你的项目名称，不能为 x_template\nplease change addon_name in addon.config.ts to your project name, not x_template'
-        );
-    }
+  if (!addon_name.match(/^[a-z][a-z0-9_]*$/)) {
+    throw new Error(
+      'addon_name 必须为字母开头，而且只能包含小写字母、数字和下划线，请到 addon.config.ts 修改\nplease change addon_name in c to match /^[a-z][a-z0-9_]*$/'
+    );
+  }
+  if (addon_name === 'x_template') {
+    throw new Error(
+      '请到 scripts/addon.config.ts 修改 addon_name 为你的项目名称，不能为 x_template\nplease change addon_name in addon.config.ts to your project name, not x_template'
+    );
+  }
 }
 
 /**
@@ -73,30 +73,30 @@ function validateAddonName() {
  */
 
 function importAddonName() {
-    const filePath = path.join(__dirname, '.test', 'addon_name.txt'); // 假设文件是 .js 扩展名
-    try {
-        // 同步读取文件内容
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        addon_name = fileContent;
-        console.log(`使用开发模板时配置的项目名称：${addon_name}`);
-    } catch (e) {}
+  const filePath = path.join(__dirname, '.test', 'addon_name.txt'); // 假设文件是 .js 扩展名
+  try {
+    // 同步读取文件内容
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    addon_name = fileContent;
+    console.log(`使用开发模板时配置的项目名称：${addon_name}`);
+  } catch (e) {}
 }
 
 // 同步调用导入函数
 importAddonName();
 try {
-    validateAddonName();
+  validateAddonName();
 } catch (error) {
-    console.error(error);
-    // 可以根据实际情况处理错误，比如退出进程等
+  console.error(error);
+  // 可以根据实际情况处理错误，比如退出进程等
 }
 
 // 导出配置对象
 export default {
-    addon_name,
-    encrypt_files,
-    exclude_files,
-    encryptDedicatedServerKeyTest,
-    encryptDedicatedServerKeyRelease_Test,
-    encryptDedicatedServerKeyRelease,
+  addon_name,
+  encrypt_files,
+  exclude_files,
+  encryptDedicatedServerKeyTest,
+  encryptDedicatedServerKeyRelease_Test,
+  encryptDedicatedServerKeyRelease,
 };

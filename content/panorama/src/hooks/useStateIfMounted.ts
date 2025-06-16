@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import useIsComponentMounted from './useIsComponnetMounted';
 
 /**
@@ -14,15 +14,15 @@ import useIsComponentMounted from './useIsComponnetMounted';
  * that does nothing if the component is not mounted
  */
 export default function useStateIfMounted<S>(initialValue: S | (() => S)): [S, Dispatch<SetStateAction<S>>] {
-    const isComponentMounted = useIsComponentMounted();
-    const [state, setState] = useState(initialValue);
-    const newSetState = useCallback(
-        value => {
-            if (isComponentMounted.current) {
-                setState(value);
-            }
-        },
-        [isComponentMounted]
-    );
-    return [state, newSetState];
+  const isComponentMounted = useIsComponentMounted();
+  const [state, setState] = useState(initialValue);
+  const newSetState = useCallback(
+    value => {
+      if (isComponentMounted.current) {
+        setState(value);
+      }
+    },
+    [isComponentMounted]
+  );
+  return [state, newSetState];
 }

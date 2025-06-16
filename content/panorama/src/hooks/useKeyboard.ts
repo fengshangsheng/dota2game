@@ -8,15 +8,15 @@ import { useEffect, useState } from 'react';
  * @return {*}  {(boolean | undefined)}
  */
 export function useAltKeyDown(): boolean | undefined {
-    const [alt, setAlt] = useState(GameUI.IsAltDown());
-    useEffect(() => {
-        const i = setInterval(() => {
-            setAlt(GameUI.IsAltDown());
-            return 0.1;
-        }, 0.1);
-        return () => clearInterval(i);
-    }, []);
-    return alt;
+  const [alt, setAlt] = useState(GameUI.IsAltDown());
+  useEffect(() => {
+    const i = setInterval(() => {
+      setAlt(GameUI.IsAltDown());
+      return 0.1;
+    }, 0.1);
+    return () => clearInterval(i);
+  }, []);
+  return alt;
 }
 
 /**
@@ -27,8 +27,8 @@ export function useAltKeyDown(): boolean | undefined {
  * @param {Function} callback
  */
 export function setKeyDownCallback(keyName: string, callback: Function) {
-    const c = GameUI.CustomUIConfig();
-    c.KeyDownCallback[keyName] = callback;
+  const c = GameUI.CustomUIConfig();
+  c.KeyDownCallback[keyName] = callback;
 }
 
 /**
@@ -38,8 +38,8 @@ export function setKeyDownCallback(keyName: string, callback: Function) {
  * @param {Function} callback
  */
 export function setKeyUpCallback(keyName: string, callback: Function) {
-    const c = GameUI.CustomUIConfig();
-    c.KeyUpCallback[keyName] = callback;
+  const c = GameUI.CustomUIConfig();
+  c.KeyUpCallback[keyName] = callback;
 }
 
 /**
@@ -51,14 +51,14 @@ export function setKeyUpCallback(keyName: string, callback: Function) {
  * @param {Function} callback
  */
 export function useKeyDown(keyName: string, callback: Function) {
-    useEffect(() => {
-        setKeyDownCallback(keyName, () => {
-            callback();
-        });
-        return () => {
-            setKeyDownCallback(keyName, () => {});
-        };
-    }, [keyName, callback]);
+  useEffect(() => {
+    setKeyDownCallback(keyName, () => {
+      callback();
+    });
+    return () => {
+      setKeyDownCallback(keyName, () => {});
+    };
+  }, [keyName, callback]);
 }
 
 /**
@@ -70,14 +70,14 @@ export function useKeyDown(keyName: string, callback: Function) {
  * @param {Function} callback
  */
 export function useKeyUp(keyName: string, callback: Function): void {
-    useEffect(() => {
-        setKeyUpCallback(keyName, () => {
-            callback();
-        });
-        return () => {
-            setKeyUpCallback(keyName, () => {});
-        };
-    }, [keyName, callback]);
+  useEffect(() => {
+    setKeyUpCallback(keyName, () => {
+      callback();
+    });
+    return () => {
+      setKeyUpCallback(keyName, () => {});
+    };
+  }, [keyName, callback]);
 }
 
 /**
@@ -87,13 +87,13 @@ export function useKeyUp(keyName: string, callback: Function): void {
  * @return {*}  {(boolean | undefined)}
  */
 export function useKeyPressed(keyName: string): boolean | undefined {
-    const [keyDown, setKeyDown] = useState(GameUI.CustomUIConfig().KeyState[keyName]);
-    useEffect(() => {
-        const i = setInterval(() => {
-            setKeyDown(GameUI.CustomUIConfig().KeyState[keyName]);
-            return 0.1;
-        }, 0.1);
-        return () => clearInterval(i);
-    }, [keyName, setKeyDown]);
-    return keyDown;
+  const [keyDown, setKeyDown] = useState(GameUI.CustomUIConfig().KeyState[keyName]);
+  useEffect(() => {
+    const i = setInterval(() => {
+      setKeyDown(GameUI.CustomUIConfig().KeyState[keyName]);
+      return 0.1;
+    }, 0.1);
+    return () => clearInterval(i);
+  }, [keyName, setKeyDown]);
+  return keyDown;
 }

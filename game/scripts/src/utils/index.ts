@@ -5,7 +5,7 @@ require('json');
 require('md5');
 require('popups');
 if (IsServer()) {
-    require('timers');
+  require('timers');
 }
 
 // rename SHA and make it global

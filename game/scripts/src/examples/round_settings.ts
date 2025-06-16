@@ -10,8 +10,8 @@ import * as round_settings from '../json/round_settings.json';
 declare type RoundSetting = typeof round_settings['round_1'];
 
 export class RoundSettings {
-    /** 其他地方获取回合配置的方法 */
-    public static GetRoundSettings(round: number): RoundSetting {
-        return round_settings[`round_${round}`];
-    }
+  /** 其他地方获取回合配置的方法 */
+  public static GetRoundSettings(round: number): RoundSetting {
+    return round_settings[`round_${round}`];
+  }
 }

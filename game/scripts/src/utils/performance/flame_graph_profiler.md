@@ -41,17 +41,17 @@ profiler.stopRecording();
 
 ```typescript
 class MyClass {
-    // 使用默认名称（类名.方法名）
-    @Profile()
-    public myMethod(): void {
-        // 方法实现...
-    }
-  
-    // 使用自定义名称
-    @Profile('自定义名称')
-    public customNameMethod(): void {
-        // 方法实现...
-    }
+  // 使用默认名称（类名.方法名）
+  @Profile()
+  public myMethod(): void {
+    // 方法实现...
+  }
+
+  // 使用自定义名称
+  @Profile('自定义名称')
+  public customNameMethod(): void {
+    // 方法实现...
+  }
 }
 ```
 
@@ -61,9 +61,14 @@ class MyClass {
 // 定义类
 @ProfileClass // 为类的所有方法添加性能分析
 class MyClass {
-    public method1(): void { /* ... */ }
-    public method2(): void { /* ... */ }
-    private method3(): void { /* ... */ }
+  public method1(): void { /* ... */
+  }
+
+  public method2(): void { /* ... */
+  }
+
+  private method3(): void { /* ... */
+  }
 }
 
 // 创建实例并使用
@@ -75,17 +80,17 @@ instance.method1(); // 已被性能分析装饰器包装
 
 ```typescript
 class ManualProfileExample {
-    private profiler = GetFlameGraphProfiler();
-  
-    public someMethod(): void {
-        // 手动开始记录函数
-        this.profiler.enterFunction('ManualProfileExample.someMethod');
-      
-        // 函数实现...
-      
-        // 手动结束记录函数
-        this.profiler.exitFunction();
-    }
+  private profiler = GetFlameGraphProfiler();
+
+  public someMethod(): void {
+    // 手动开始记录函数
+    this.profiler.enterFunction('ManualProfileExample.someMethod');
+
+    // 函数实现...
+
+    // 手动结束记录函数
+    this.profiler.exitFunction();
+  }
 }
 ```
 

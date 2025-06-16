@@ -1,18 +1,18 @@
 function string.fromhex(str)
     return (str:gsub(
-        "..",
-        function(cc)
-            return string.char(tonumber(cc, 16))
-        end
+            "..",
+            function(cc)
+                return string.char(tonumber(cc, 16))
+            end
     ))
 end
 
 function string.tohex(str)
     return (str:gsub(
-        ".",
-        function(c)
-            return string.format("%02X", string.byte(c))
-        end
+            ".",
+            function(c)
+                return string.format("%02X", string.byte(c))
+            end
     ))
 end
 
@@ -24,7 +24,7 @@ end
 -- https://github.com/XavierCHN/x-template/blob/master/scripts/addon.config.ts#L39-L40
 -- 关于他的获取方式请参考此项目
 -- https://github.com/XavierCHN/fetch-keys
-if not IsServer() then 
+if not IsServer() then
     -- 如果客户端尝试解密，那么输出一个报错
     -- 当然，你这里也可以将这个方法修改为“不安全的做法”
     -- 请自行深入研究以避免暴露密钥（自己找一个“藏密钥”的方法吧~）

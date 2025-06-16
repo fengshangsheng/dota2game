@@ -46,21 +46,21 @@ const MyComponent = () => {
 
 ## 属性
 
-| 属性名 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| title | string | - | 窗口标题 |
-| children | ReactNode | - | 窗口内容 |
-| visible | boolean | true | 是否可见 |
-| initialX | number | 150 | 窗口初始X坐标 |
-| initialY | number | 150 | 窗口初始Y坐标 |
-| width | number \| string | 400 | 窗口宽度 |
-| height | number \| string | 'auto' | 窗口高度 |
-| icon | string | - | 窗口图标URL |
-| id | string | 'draggable_window' | 窗口ID |
-| onClose | () => void | - | 窗口关闭回调函数 |
-| className | string | '' | 窗口自定义类名 |
-| titleBarClassName | string | '' | 标题栏自定义类名 |
-| contentClassName | string | '' | 内容区自定义类名 |
+| 属性名               | 类型               | 默认值                | 说明       |
+|-------------------|------------------|--------------------|----------|
+| title             | string           | -                  | 窗口标题     |
+| children          | ReactNode        | -                  | 窗口内容     |
+| visible           | boolean          | true               | 是否可见     |
+| initialX          | number           | 150                | 窗口初始X坐标  |
+| initialY          | number           | 150                | 窗口初始Y坐标  |
+| width             | number \| string | 400                | 窗口宽度     |
+| height            | number \| string | 'auto'             | 窗口高度     |
+| icon              | string           | -                  | 窗口图标URL  |
+| id                | string           | 'draggable_window' | 窗口ID     |
+| onClose           | () => void       | -                  | 窗口关闭回调函数 |
+| className         | string           | ''                 | 窗口自定义类名  |
+| titleBarClassName | string           | ''                 | 标题栏自定义类名 |
+| contentClassName  | string           | ''                 | 内容区自定义类名 |
 
 ## 样式自定义
 
